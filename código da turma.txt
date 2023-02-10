@@ -1,0 +1,3 @@
+A maior nota de matemática foi de maria: 9, e a menor foi de josé: 2
+A maior nota de português foi de marcela: 6 e a menor joão: 3
+A maior nota de história foi de josé: 7 e a menor joão: 3
