@@ -1,71 +1,51 @@
 import sys
 
-with open('código da turma.txt', 'w') as arquivo:
+def materias(NOME_DO_ALUNO, NOME_DA_MATERIA, NOTA_DA_MATERIA):
+    while NOME_DO_ALUNO != 'sair':
+        NOME_DO_ALUNO = str(input('Digite o nome do aluno: '))
 
-    def maior_nota(maior_atual:float, num:float):
-        if num > maior_atual:
-            return num
-        return maior_atual
+        if NOME_DO_ALUNO == 'sair':
+            break
 
-    def menor_nota(menor_atual:float, num:float):
-        if num < menor_atual:
-            return num
-        return menor_atual
+        NOME_DA_MATERIA = str(input('Digite o nome da matéria: '))
 
-    if __name__ == '__main__':
+        if NOME_DA_MATERIA == 'sair':
+            break
 
-        codigo = str(input('Digite o código da turma(a): \n'))
-        nome = 0
-        maior_mat = 0
-        maior_por = 0
-        maior_his = 0
-        menor_mat = sys.maxsize
-        menor_por = sys.maxsize
-        menor_his = sys.maxsize
-        nota = dict()
+        NOTA_DA_MATERIA = float(input('Digite a nota da matéria: '))
 
-        while nome != 'sair': 
-            nome = str(input('Digite o nome do aluno(a): \n'))
+        if NOTA_DA_MATERIA == 'sair':
+            break
             
-            if nome == 'sair':
-                break
+        MATERIA[NOME_DO_ALUNO] = [NOME_DA_MATERIA, NOTA_DA_MATERIA]
 
-            mat = int(input('Nota de matemática: \n'))
-            por = int(input('Nota de português: \n'))
-            his = int(input('Nota de história: \n'))
-            nota[nome] = [mat, por, his]
+    for NOME_DO_ALUNO in MATERIA.keys():
 
-        for (nome_do_aluno, notas_do_aluno) in nota.items():
+        MAIOR_NOTA = maior_nota('maior_nota_atual', 'nova_nota')
+        if NOTA_DA_MATERIA == MAIOR_NOTA:
+            NOTA_DA_MATERIA = NOME_DO_ALUNO
 
-            nota_mat = notas_do_aluno[0]
-            nota_por = notas_do_aluno[1]
-            nota_his = notas_do_aluno[2]
+        MENOR_NOTA_MATERIA = menor_nota('menor_nota_atual', 'nova_nota')
+        if NOTA_DA_MATERIA == MENOR_NOTA_MATERIA:
+            NOTA_DA_MATERIA = NOME_DO_ALUNO
 
-            maior_mat = maior_nota(nota_mat, maior_mat)
-            if nota_mat == maior_mat:
-                maior_nota_aluno_mat = nome_do_aluno
+def maior_nota(maior_nota_atual:float, nova_nota:float):
+    if nova_nota > maior_nota_atual:
+        return nova_nota
+    return maior_nota_atual
 
-            maior_por = maior_nota(nota_por, maior_por)
-            if nota_por == maior_por:
-                maior_nota_aluno_por = nome_do_aluno
+def menor_nota(menor_nota_atual:float, nova_nota:float):
+    if nova_nota < menor_nota_atual:
+        return nova_nota
+    return menor_nota_atual
 
-            maior_his = maior_nota(nota_his, maior_his)
-            if nota_his == maior_his:
-                maior_nota_aluno_his = nome_do_aluno
+if __name__ == '__main__':
 
-            menor_mat = menor_nota(nota_mat, menor_mat)
-            if nota_mat == menor_mat:
-                menor_nota_aluno_mat = nome_do_aluno
+    MAIOR_NOTA = 0
+    MENOR_NOTA = sys.maxsize
+    MATERIA = dict()
 
-            menor_por = menor_nota(nota_por, menor_por)
-            if nota_por == menor_por:
-                menor_nota_aluno_por = nome_do_aluno
-
-            menor_his = menor_nota(nota_his, menor_his)
-            if nota_his == menor_his:
-                menor_nota_aluno_his = nome_do_aluno
-
-
-    print(f'A maior nota de matemática foi de {maior_nota_aluno_mat}: {maior_mat}, e a menor foi de {menor_nota_aluno_mat}: {menor_mat}', file=arquivo)
-    print(f'A maior nota de português foi de {maior_nota_aluno_por}: {maior_por} e a menor {menor_nota_aluno_por}: {menor_por}', file=arquivo)
-    print(f'A maior nota de história foi de {maior_nota_aluno_his}: {maior_his} e a menor {menor_nota_aluno_his}: {menor_his}', file=arquivo)
+materias('NOME_DO_ALUNO', 'NOME_DA_MATERIA', 'NOTA_DA_MATERIA')
+print(MATERIA)
+print(MAIOR_NOTA)
+print(MENOR_NOTA)
