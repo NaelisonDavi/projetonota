@@ -2,36 +2,36 @@ import sys
 
 with open('código da turma.txt', 'w') as arquivo:
 
-    def criador_de_dicionario(NOME_DO_ALUNO:int, NOME_DA_MATERIA:int, NOTA_DO_ALUNO:float):
-        while NOME_DO_ALUNO != 'sair': 
+    def criador_de_dicionario(nome_do_aluno:int, nome_da_materia:int, nota_do_aluno:float):
+        while nome_do_aluno != 'sair': 
 
-            NOME_DO_ALUNO = str(input('Digite o nome do aluno(a): \n'))
-            if NOME_DO_ALUNO == 'sair':
+            nome_do_aluno = str(input('Digite o nome do aluno(a): \n'))
+            if nome_do_aluno == 'sair':
                 break
 
-            NOME_DA_MATERIA = str(input('Insira o nome da matéria: \n'))
-            if NOME_DA_MATERIA == 'sair':
+            nome_da_materia = str(input('Insira o nome da matéria: \n'))
+            if nome_da_materia == 'sair':
                 break
 
-            NOTA_DO_ALUNO = float(input('Insira uma nota: \n'))
-            if NOTA_DO_ALUNO == 'sair':
+            nota_do_aluno = float(input('Insira uma nota: \n'))
+            if nota_do_aluno == 'sair':
                 break
 
-            TODAS_AS_NOTAS = {'NOME_DO_ALUNO': {'NOME_DA_MATERIA': 'NOTA_DO_ALUNO'}}
+            TODAS_AS_NOTAS[(nome_do_aluno, nome_da_materia)] = nota_do_aluno
 
         return TODAS_AS_NOTAS
         
-    def calcular_maior_nota(MAIOR_NOTA_ATUAL:float, NOTA_DO_ALUNO:float):
-        if NOTA_DO_ALUNO in TODAS_AS_NOTAS.items() > MAIOR_NOTA_ATUAL:
-            MAIOR_NOTA_ATUAL = NOTA_DO_ALUNO
-            return MAIOR_NOTA_ATUAL
-        return NOTA_DO_ALUNO
+    def calcular_maior_nota(maior_nota_atual:float, nota_do_aluno:float):
+        if nota_do_aluno in TODAS_AS_NOTAS.items() > maior_nota_atual:
+            maior_nota_atual = nota_do_aluno
+            return maior_nota_atual
+        return nota_do_aluno
 
-    def calcular_menor_nota(MENOR_NOTA_ATUAL:float, NOTA_DO_ALUNO:float):
-        if NOTA_DO_ALUNO in TODAS_AS_NOTAS.items() < MENOR_NOTA_ATUAL:
-            MENOR_NOTA_ATUAL = NOTA_DO_ALUNO
-            return MENOR_NOTA_ATUAL
-        return NOTA_DO_ALUNO
+    def calcular_menor_nota(menor_nota_atual:float, nota_do_aluno:float):
+        if nota_do_aluno in TODAS_AS_NOTAS.items() < menor_nota_atual:
+            menor_nota_atual = nota_do_aluno
+            return menor_nota_atual
+        return nota_do_aluno
 
     if __name__ == '__main__':
 
@@ -41,5 +41,4 @@ with open('código da turma.txt', 'w') as arquivo:
         TODAS_AS_NOTAS = dict()
 
 criador_de_dicionario('NOME_DO_ALUNO', 'NOME_DA_MATERIA', 'NOTA_DO_ALUNO')
-calcular_maior_nota('MAIOR_NOTA_ATUAL', 'NOTA_DO_ALUNO')
-print(type(TODAS_AS_NOTAS))
+print(TODAS_AS_NOTAS)
